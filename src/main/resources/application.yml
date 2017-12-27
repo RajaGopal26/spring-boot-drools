@@ -1,0 +1,39 @@
+server:
+  context-path: /api
+spring:
+   profiles:
+    active: "prod"
+   jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+      use-new-id-generator-mappings: true
+logging:
+  file: emzeelog.log
+---
+spring:
+    profiles: dev
+    datasource:
+      url: jdbc:postgresql://localhost:5432/tvs_ibl
+      username: postgres
+      password: postGreSql
+      driver-class-name: org.postgresql.Driver
+        
+---
+spring:
+    profiles: test
+    datasource:
+      url: jdbc:postgresql://localhost:5432/tvs_ibl
+      username: postgres
+      password: postGreSql
+      driver-class-name: org.postgresql.Driver
+        
+---
+spring:
+    profiles: prod
+    datasource:
+      url: jdbc:postgresql://localhost:5432/tvs_ibl
+      username: postgres
+      password: postGreSql
+      driver-class-name: org.postgresql.Driver

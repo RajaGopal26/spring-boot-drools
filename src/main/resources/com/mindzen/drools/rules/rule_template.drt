@@ -1,0 +1,59 @@
+template header
+ruleId
+ruleStatus
+effectiveDate
+expiryDate
+make
+model
+fuelType
+variant
+cubicCapacity
+seatingCapacity
+insurerId
+channelName
+channelZone
+channelRegion
+channelBranch
+vehicleType
+policyType
+manufactureYear
+minDiscount
+maxDiscount
+
+package com.mindzen.drools.rules;
+
+import com.mindzen.drools.model.*;
+import java.util.HashMap;
+
+global java.util.List globalList;
+
+template "sale-discount-rules"
+
+rule "sales discount rule #@{ruleId}"
+	enabled @{ruleStatus}
+	date-effective "@{effectiveDate}"
+	date-expires "@{expiryDate}"
+    when
+        VehicleInfo(make=="@{make}");
+        VehicleInfo(model=="@{model}");
+        VehicleInfo(fuelType=="@{fuelType}");
+        VehicleInfo(variant=="@{variant}");
+        VehicleInfo(cubicCapacity==@{cubicCapacity});
+        VehicleInfo(seatingCapacity==@{seatingCapacity});
+        RuleSet(insurerId==@{insurerId});
+        RuleSet(channelName=="@{channelName}");
+        RuleSet(channelZone=="@{channelZone}");
+        RuleSet(channelRegion=="@{channelRegion}");
+        RuleSet(channelBranch=="@{channelBranch}");
+        RuleSet(vehicleType=="@{vehicleType}");
+        RuleSet(policyType=="@{policyType}");
+        RuleSet(manufactureYear==@{manufactureYear});
+    then
+    	HashMap $result = new HashMap();
+    	$result.put("min", @{minDiscount});
+    	$result.put("max", @{maxDiscount});
+    	globalList.add($result);
+    	System.out.println("Match found in rule #@{ruleId}");
+end
+
+end template
