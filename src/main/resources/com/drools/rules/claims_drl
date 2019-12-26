@@ -1,6 +1,6 @@
-package com.mindzen.drools.rules
+package com.drools.rules
 
-import com.mindzen.drools.model.*;
+import com.drools.model.*;
 
 rule "claim rule 1"
     when

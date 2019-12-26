@@ -1,4 +1,4 @@
-package com.mindzen.drools.jpa;
+package com.drools.jpa;
 
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;

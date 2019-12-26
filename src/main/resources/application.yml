@@ -2,38 +2,44 @@ server:
   context-path: /api
 spring:
    profiles:
-    active: "prod"
+    active: "dev"
    jpa:
-    database-platform: org.hibernate.dialect.PostgreSQL94Dialect
-    show-sql: false
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
     hibernate:
       ddl-auto: update
       use-new-id-generator-mappings: true
+    properties:
+       hibernate:
+          cache:
+             use_second_level_cache: true
+                      
 logging:
   file: emzeelog.log
 ---
 spring:
     profiles: dev
     datasource:
-      url: jdbc:postgresql://localhost:5432/tvs_ibl
-      username: postgres
-      password: postGreSql
-      driver-class-name: org.postgresql.Driver
-        
+      url: jdbc:mysql://192.168.2.19:3306/RAJA_DB
+      username: "0050"
+      password: "Aalam%153"
+      driver-class-name: com.mysql.jdbc.Driver
+           
 ---
 spring:
     profiles: test
     datasource:
-      url: jdbc:postgresql://localhost:5432/tvs_ibl
-      username: postgres
-      password: postGreSql
-      driver-class-name: org.postgresql.Driver
+      url: jdbc:mysql://192.168.2.19:3306/RAJA_DB?serverTimezone=UTC&useSSL=false&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8
+      username: 0050
+      password: Aalam%153
+      driver-class-name: com.mysql.jdbc.Driver
         
 ---
 spring:
     profiles: prod
     datasource:
-      url: jdbc:postgresql://localhost:5432/tvs_ibl
-      username: postgres
-      password: postGreSql
-      driver-class-name: org.postgresql.Driver
+      url: jdbc:mysql://192.168.2.19:3306/RAJA_DB?serverTimezone=UTC&useSSL=false&createDatabaseIfNotExist=true&useUnicode=yes&characterEncoding=UTF-8
+      username: 0050
+      password: Aalam%153
+      driver-class-name: com.mysql.jdbc.Driver
+   

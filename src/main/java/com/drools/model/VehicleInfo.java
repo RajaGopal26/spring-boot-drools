@@ -1,4 +1,4 @@
-package com.mindzen.drools.model;
+package com.drools.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

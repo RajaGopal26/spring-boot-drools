@@ -1,6 +1,4 @@
-package com.mindzen.drools.model;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
+package com.drools.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

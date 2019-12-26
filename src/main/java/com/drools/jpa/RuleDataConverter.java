@@ -1,12 +1,13 @@
-package com.mindzen.drools.jpa;
+package com.drools.jpa;
 
 import org.springframework.stereotype.Component;
 
-import com.mindzen.drools.model.RuleSet;
+import com.drools.model.RuleSet;
+
 
 @Component
 public class RuleDataConverter {
-	
+
 	public RuleTable convert(RuleSet ruleSet){
 		RuleTable ruleTable = new RuleTable();
 		ruleTable.setChannelZone(ruleSet.getChannelZone());
@@ -27,6 +28,9 @@ public class RuleDataConverter {
 		ruleTable.setMinDiscount(ruleSet.getMinDiscount());
 		ruleTable.setPolicyType(ruleSet.getPolicyType());
 		ruleTable.setVehicleType(ruleSet.getVehicleType());
+		ruleTable.setType(ruleSet.getCaseType().getType());
+		ruleTable.setTeamName(ruleSet.getCaseType().getTeamName());
+		ruleTable.setUserName(ruleSet.getCaseType().getUserName());
 		ruleTable.setRuleStatus(true);
 		return ruleTable;
 	}

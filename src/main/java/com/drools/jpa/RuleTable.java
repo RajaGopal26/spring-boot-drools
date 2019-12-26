@@ -1,31 +1,21 @@
-package com.mindzen.drools.jpa;
+package com.drools.jpa;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Index;
 import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 
 @Entity
-@Table(
-		name="rule_table",
-		indexes={
-				@Index(
-						columnList="channel_name,channel_zone,channel_region,channel_branch,insurer_id,make,model,fuel_type,variant,cubic_capacity,seating_capacity,vehicle_type,policy_type,manufacture_year,effective_date,expiry_date",
-						name="unique_index_rule")
-		}
-		)
+@Table(name = "rule_table")
 @Data
 public class RuleTable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	@Column(name="rule_id")
 	private Integer ruleId;
 
@@ -64,6 +54,12 @@ public class RuleTable {
 
 	@Column
 	private String variant;
+	
+	private String type;
+	
+	private String userName;
+
+	private String teamName;
 
 	@Column(name="cubic_capacity")
 	private Integer cubicCapacity=null; 

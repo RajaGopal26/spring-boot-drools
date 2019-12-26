@@ -1,6 +1,4 @@
-package com.mindzen.drools.model;
-
-import javax.validation.constraints.NotNull;
+package com.drools.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -21,6 +19,7 @@ public class RuleSet {
     private String policyType;
     private Integer manufactureYear=null;
     private VehicleInfo vehicle;
+    private CaseType caseType;
     //private Integer salesVolume=null;
     private String effectiveDate;
     private String expiryDate;
