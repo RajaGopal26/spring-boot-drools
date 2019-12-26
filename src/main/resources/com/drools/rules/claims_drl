@@ -1,0 +1,144 @@
+package com.drools.rules
+
+import com.drools.model.*;
+
+rule "claim rule 1"
+    when
+        Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="Convalescence Benefit", coverage==false, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="Out of SI");
+    then
+    	System.out.println("Match found in rule #1");
+end
+
+rule "claim rule 2"
+    when
+        Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="Convalescence Benefit", coverage==false, serviceType=="In-Patient");
+    then
+    	System.out.println("Match found in rule #2");
+end
+
+rule "claim rule 4"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="Hospital Daily Cash", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="Out of SI", duration==48);
+    then
+    	System.out.println("claim rule 4 executed");
+end
+
+rule "claim rule 5"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Exclusions", conditionName=="PED", coverage==true, serviceType=="In-Patient", serviceSubType=="Day Care", coverageType=="With in SI", duration==30, copayPercent==20);
+
+    then
+    	System.out.println("claim rule 5 executed");
+end
+
+rule "claim rule 6"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Accommodation Charges", conditionName=="ICU Charges", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 6 executed");
+end
+
+rule "claim rule 7"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Ailment Conditions", conditionName=="Ailment Cappings", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self", claimLimit==25000);
+    then
+    	System.out.println("claim rule 7 executed");
+end
+
+rule "claim rule 8"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="General Condition", coverage==false, serviceType=="Out-Patient", serviceSubType=="Dental", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 8 executed");
+end
+
+rule "claim rule 9"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="General Condition", coverage==false, serviceType=="Out-Patient", serviceSubType=="Health Check UP", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 9 executed");
+end
+
+rule "claim rule 10"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="General Condition", coverage==true, serviceType=="Out-Patient", serviceSubType=="Vaccination", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 10 executed");
+end
+
+rule "claim rule 13"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Maternity", conditionName=="Maternity", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self", claimLimit==20000);
+    then
+    	System.out.println("claim rule 13 executed");
+end
+
+rule "claim rule 3"
+    when
+    	Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Pre-Hospitalization", conditionName=="Pre-Hospitalization", coverage==false, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 3 executed");
+end
+
+rule "claim rule 11"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Sub-Limits", conditionName=="Sub-Limits", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 11 executed");
+end
+
+rule "claim rule 12"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="Intimation", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 12 executed");
+end
+
+rule "claim rule 14"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="General Condition", coverage==false, serviceType=="Out-Patient", serviceSubType=="Health Check UP", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 14 executed");
+end
+
+rule "claim rule 15"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Pre and Post Hospitalization", conditionName=="Pre and Post Natal", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", relations=="Self", duration==30, claimLimit==2000, copayPercent==10, age==40);
+    then
+    	System.out.println("claim rule 15 executed");
+end
+
+rule "claim rule 16"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Buffer", conditionName=="Buffer", coverage==true, serviceType=="Out-Patient", serviceSubType=="Other OP", coverageType=="Out of SI", relations=="Self");
+    then
+    	System.out.println("claim rule 16 executed");
+end
+
+rule "claim rule 17"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Accommodation Charges", conditionName=="Room Rent Charges", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", relations=="Self");
+    then
+    	System.out.println("claim rule 17 executed");
+end
+
+rule "claim rule 18"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Buffer", conditionName=="Buffer", coverage==true, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self");
+    then
+    	System.out.println("claim rule 18 executed");
+end
+
+rule "claim rule 19"
+    when
+		Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="Exclusions", conditionName=="Exclusions-Waiting Period", coverage==false, serviceType=="In-Patient", serviceSubType=="Hospitalization", coverageType=="With in SI", relations=="Self", duration==9, claimLimit==100000);
+    then
+    	System.out.println("claim rule 19 executed");
+end
+
+rule "claim rule 20"
+    when
+        Claim(hospitalType=="Network", policy=="Policy", conditionCategory=="General Conditions", conditionName=="Convalescence Benefit", serviceType=="In-Patient");
+    then
+    	System.out.println("claim rule 20 executed");
+end
